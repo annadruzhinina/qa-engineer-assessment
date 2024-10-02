@@ -54,9 +54,13 @@ function App() {
     ]);
   }, []);
 
-  const handleChange = useCallback((checked: boolean) => {
-    // handle the check/uncheck logic
-  }, []);
+  const handleChange = (id: string, checked: boolean) => {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === id ? { ...todo, checked } : todo
+      )
+    );
+  };
 
   return (
     <Wrapper>
@@ -64,7 +68,7 @@ function App() {
       <AddInput onAdd={addTodo} />
       <TodoList>
         {todos.map((todo) => (
-          <TodoItem {...todo} onChange={handleChange} />
+          <TodoItem key={todo.id} {...todo} onChange={(checked) => handleChange(todo.id, checked)} />
         ))}
       </TodoList>
     </Wrapper>
