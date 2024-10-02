@@ -49,3 +49,19 @@ test('toggling todo item changes its checked state', () => {
     // Expect it to be checked
     expect(todoItem).toBeChecked();
   });
+
+  // Toggle Unchecked State: Clicking on a todo item should toggle the “unchecked” state.
+  test('toggling todo item changes its checked state', () => {
+    const { getByLabelText } = render(<App />);
+    const todoItem = getByLabelText(/Ace CoderPad interview/i);
+
+    // Initially unchecked
+    expect(todoItem).toBeChecked();
+
+    // Toggle checkbox
+    fireEvent.click(todoItem);
+
+    // Expect it to be checked
+    expect(todoItem).not.toBeChecked();
+  });
+
