@@ -64,3 +64,21 @@ test('toggling todo item changes its checked state', () => {
     // Expect it to be checked
     expect(todoItem).not.toBeChecked();
   });
+
+  // Persist State: The todo list state should be saved to and loaded from local storage.
+  test('saves and loads todos from localStorage', () => {
+    const todos = [
+      { id: '1', label: 'Test 1', checked: false },
+      { id: '2', label: 'Test 2', checked: true },
+      { id: '3', label: 'Test 3', checked: true },
+    ];
+
+    // Mock localStorage
+    window.localStorage.setItem('todos', JSON.stringify(todos));
+
+    const { getByText } = render(<App />);
+
+    // Check if todos are loaded from localStorage
+    const todoItem = getByText(/Test 3/i);
+    expect(todoItem).toBeInTheDocument();
+  });
