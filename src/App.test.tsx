@@ -16,7 +16,7 @@ beforeEach(() => {
       },
       setItem(key: string, value: string) {
         store[key] = value;
-        console.log('setItem: ',key, value)
+        // console.log('setItem: ',key, value)
       },
       clear() {
         store = {};
