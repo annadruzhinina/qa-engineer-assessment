@@ -19,7 +19,15 @@ I created **two branches** to separate testing and bug-fixing efforts:
   - **Persist State**: The todo list state is saved to and loaded from local storage.
   - **Auto-Sink Checked Items**: Checked items automatically move to the bottom of the list.
 - **Outcome**: This branch now contains the updated `App.tsx` file, ensuring all the test cases pass successfully.
-Verification**.                      |
+
+## 🚀 Summary of Changes
+
+| **Branch**    | **Description**                                                             |
+|---------------|-----------------------------------------------------------------------------|
+| `AutoTest`    | Created initial test cases, highlighted missing functionality.              |
+| `BugFix`      | Implemented missing logic and passed all test cases from `AutoTest`.        |
+| **Merge**     | Merged `AutoTest` into `BugFix` and verified all tests passed successfully. |
+| **New Test**  | Added a new test case for **Title Text Verification**.                      |
 
 ## ✅ Results
 
