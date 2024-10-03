@@ -9,7 +9,6 @@ This project was created as part of an interview assessment to demonstrate **uni
 | `AutoTest`    | Created initial test cases, highlighted missing functionality.              |
 | `BugFix`      | Implemented missing logic and passed all test cases from `AutoTest`.        |
 | **Merge**     | Merged `AutoTest` into `BugFix` and verified all tests passed successfully. |
-| **New Test**  | Added a new test case for **Title Text Verification**.                      |
 
 ## 🌿 Branch Structure
 
