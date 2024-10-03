@@ -115,7 +115,7 @@ test('Saves todos to localStorage when checked', () => {
   fireEvent.click(todoItem);
 
   // Expect it to be checked
-  expect(todoItem).not.toBeChecked();
+  expect(todoItem).toBeChecked();
 
   const savedTodos = JSON.parse(window.localStorage.getItem('todos') || '[]');
   const changedTodo = savedTodos.find((todo: Todo) => todo.label === 'Test 1');
@@ -125,7 +125,7 @@ test('Saves todos to localStorage when checked', () => {
 });
 
 // 👉🏻 Saving State: The todo list state should be saved to local storage when modified.
-test('Saves todos to localStorage when new todo added', () => {
+test('Saves todos to localStorage when new todo added', async () => {
   window.localStorage.clear();
   render(<App />);
 
@@ -133,7 +133,7 @@ test('Saves todos to localStorage when new todo added', () => {
   fireEvent.change(input, { target: { value: 'New Todo Item' } });
   fireEvent.submit(input.closest('form')!);
 
-  const newTodoItem = screen.findByText(/New Todo Item/i);
+  const newTodoItem = await screen.findByText(/New Todo Item/i);
   expect(newTodoItem).toBeInTheDocument();
 
   const savedTodos = JSON.parse(window.localStorage.getItem('todos') || '[]');
