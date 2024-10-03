@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { v4 as uuid } from "uuid";
 import styled from "@emotion/styled";
 import { AddInput } from "./components/AddInput";
@@ -41,7 +41,15 @@ const initialData: Todo[] = [
 ];
 
 function App() {
-  const [todos, setTodos] = useState<Todo[]>(initialData);
+  const [todos, setTodos] = useState<Todo[]>(()=>{
+    const savedTodos = window.localStorage.getItem('todos');
+    return savedTodos ? JSON.parse(savedTodos) : initialData;
+  });
+
+  // Save todos to localStorage whenever they change
+  useEffect(() => {
+    window.localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   const addTodo = useCallback((label: string) => {
     setTodos((prev) => [
