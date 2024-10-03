@@ -63,11 +63,15 @@ function App() {
   }, []);
 
   const handleChange = (id: string, checked: boolean) => {
-    setTodos((prevTodos) =>
-      prevTodos.map((todo) =>
+    setTodos((prevTodos) => {
+      // Update the checked state of the todo
+      const updatedTodos = prevTodos.map((todo) =>
         todo.id === id ? { ...todo, checked } : todo
-      )
-    );
+      );
+      // Sort the todos: unchecked items first, checked items last
+      const sortedTodos = updatedTodos.sort((a, b) => Number(a.checked) - Number(b.checked));
+      return sortedTodos;
+    });
   };
 
   return (
