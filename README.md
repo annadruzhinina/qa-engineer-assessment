@@ -2,6 +2,14 @@
 # 📋 Project Overview
 
 This project was created as part of an interview assessment to demonstrate **unit testing skills** and **bug fixing** for a simple Todo list application.
+## 🚀 Summary of Changes
+
+| **Branch**    | **Description**                                                             |
+|---------------|-----------------------------------------------------------------------------|
+| `AutoTest`    | Created initial test cases, highlighted missing functionality.              |
+| `BugFix`      | Implemented missing logic and passed all test cases from `AutoTest`.        |
+| **Merge**     | Merged `AutoTest` into `BugFix` and verified all tests passed successfully. |
+| **New Test**  | Added a new test case for **Title Text Verification**.                      |
 
 ## 🌿 Branch Structure
 
@@ -11,6 +19,16 @@ I created **two branches** to separate testing and bug-fixing efforts:
 - **Purpose**: Contains the initial automated tests for the Todo list application.
 - **Description**: No modifications were made to `App.tsx`. The focus was on writing unit tests to verify the expected functionality.
 - **Outcome**: The tests were designed to fail, highlighting the missing or incorrect functionality in the application logic.
+- **Tests created**:
+   - Toggle Checked State: Clicking on a todo item should toggle the “checked” state.
+      - Tested checked->unchecked
+      - Tested uncecked->checked
+   - Persist State: The todo list state should be saved to and loaded from local storage.
+      - Tested loading from persistent storage
+      - Tested storing new item to persistent storage
+   - Auto-Sink Checked Items: Checked items should sink to the bottom of the list automatically.
+      - Tested item go down after checked
+   - Test title is correct - app is available
 
 ### 2️⃣ `BugFix` Branch
 - **Purpose**: Implemented the required logic to fix the issues identified in the `AutoTest` branch.
@@ -19,15 +37,6 @@ I created **two branches** to separate testing and bug-fixing efforts:
   - **Persist State**: The todo list state is saved to and loaded from local storage.
   - **Auto-Sink Checked Items**: Checked items automatically move to the bottom of the list.
 - **Outcome**: This branch now contains the updated `App.tsx` file, ensuring all the test cases pass successfully.
-
-## 🚀 Summary of Changes
-
-| **Branch**    | **Description**                                                             |
-|---------------|-----------------------------------------------------------------------------|
-| `AutoTest`    | Created initial test cases, highlighted missing functionality.              |
-| `BugFix`      | Implemented missing logic and passed all test cases from `AutoTest`.        |
-| **Merge**     | Merged `AutoTest` into `BugFix` and verified all tests passed successfully. |
-| **New Test**  | Added a new test case for **Title Text Verification**.                      |
 
 ## ✅ Results
 
@@ -41,6 +50,8 @@ After merging the `AutoTest` branch into the `BugFix` branch and running all tes
 - **Jest** and **React Testing Library** for creating and running the tests.
 - **Local Storage API** for state persistence.
 
+# _______________________________________
+# 🔽 Original Requirements 🔽
 ### QA Engineer Assessment - React Todo App
 
 Welcome to the Gesture Tech QA Engineer take-home challenge!
