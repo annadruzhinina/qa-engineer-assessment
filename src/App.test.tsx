@@ -146,3 +146,10 @@ test('checked items sink to the bottom of the list automatically', () => {
     expect(listItems[1]).toHaveTextContent('Test 3');
     expect(listItems[2]).toHaveTextContent('Test 1');
   });
+
+    // Title is correct: Check the text in the title.
+    test('test check title is correct', () => {
+      const { getByText } = render(<App />);
+      const title = getByText(/Todo List/i);
+      expect(title).toBeInTheDocument();
+    })
