@@ -8,11 +8,14 @@ This project was created as part of an interview assessment to demonstrate **uni
 |---------------|-----------------------------------------------------------------------------|
 | `AutoTest`    | Created initial test cases, highlighted missing functionality.              |
 | `BugFix`      | Implemented missing logic and passed all test cases from `AutoTest`.        |
-| **Merge**     | Merged `AutoTest` into `BugFix` and verified all tests passed successfully. |
+| `main`        | Merged `AutoTest` into `BugFix` and verified all tests passed successfully. |
 
 ## 🌿 Branch Structure
 
 I created **two branches** to separate testing and bug-fixing efforts:
+
+### 0️⃣ `main` Branch
+- **Purpose**: Display the final result.
 
 ### 1️⃣ `AutoTest` Branch
 - **Purpose**: Contains the initial automated tests for the Todo list application.
