@@ -80,7 +80,9 @@ function App() {
       <AddInput onAdd={addTodo} />
       <TodoList>
         {todos.map((todo) => (
-          <TodoItem key={todo.id} {...todo} onChange={(checked) => handleChange(todo.id, checked)} />
+          <li>
+            <TodoItem key={todo.id} {...todo} onChange={(checked) => handleChange(todo.id, checked)} />
+          </li>
         ))}
       </TodoList>
     </Wrapper>
