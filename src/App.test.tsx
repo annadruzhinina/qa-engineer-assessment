@@ -82,3 +82,64 @@ test('toggling todo item changes its checked state', () => {
     const todoItem = getByText(/Test 3/i);
     expect(todoItem).toBeInTheDocument();
   });
+
+  // 👉🏻 Saving State: The todo list state should be saved to local storage when modified.
+ test('saves todos to localStorage when modified', async () => {
+  window.localStorage.clear();
+  render(<App />);
+
+  const input = screen.getByPlaceholderText('Add a new todo item here');
+  fireEvent.change(input, { target: { value: 'New Todo Item' } });
+  fireEvent.submit(input.closest('form')!);
+
+  const newTodoItem = await screen.findByText(/New Todo Item/i);
+  expect(newTodoItem).toBeInTheDocument();
+
+  const savedTodos = JSON.parse(window.localStorage.getItem('todos') || '[]');
+  const addedTodo = savedTodos.find((todo: Todo) => todo.label === 'New Todo Item');
+
+  expect(addedTodo).toBeDefined();
+  expect(addedTodo.checked).toBe(false);
+});
+
+
+// 👉🏻 Checked items should sink to the bottom of the list automatically.
+test('checked items sink to the bottom of the list automatically', () => {
+
+  const todos = [
+      { id: '1', label: 'Test 1', checked: false },
+      { id: '2', label: 'Test 2', checked: false },
+      { id: '3', label: 'Test 3', checked: false },
+    ];
+
+    // Mock localStorage
+    window.localStorage.setItem('todos', JSON.stringify(todos));
+
+  // Render the App component
+  render(<App />);
+
+  // Get all list items before any interaction
+  let listItems = screen.getAllByRole('listitem');
+
+  console.log('listItems: ', listItems)
+
+  // Verify initial order of items
+  expect(listItems[0]).toHaveTextContent('Test 1');
+  expect(listItems[1]).toHaveTextContent('Test 2');
+  expect(listItems[2]).toHaveTextContent('Test 3');
+
+
+    // Simulate checking the second item ("Reboot computer")
+    const item1Checkbox = screen.getByLabelText('Test 1');
+    fireEvent.click(item1Checkbox);
+
+    // Get all list items after checking the item
+    listItems = screen.getAllByRole('listitem');
+
+    console.log('listItems - after click: ', listItems)
+
+    // Verify that "Reboot computer" has moved to the bottom
+    expect(listItems[0]).toHaveTextContent('Test 2');
+    expect(listItems[1]).toHaveTextContent('Test 3');
+    expect(listItems[2]).toHaveTextContent('Test 1');
+  });
